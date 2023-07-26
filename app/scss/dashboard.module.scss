@@ -1,0 +1,36 @@
+@import "./variables.module.scss";
+
+.wrapper {
+  // display: flex;
+  // justify-content: center;
+  // flex-wrap: wrap;
+}
+
+.header {
+  width: 100%;
+  margin: 30px 0 20px;
+
+  h1 {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    margin: 0;
+    font-size: 30px;
+    text-align: center;
+  }
+
+  img {
+    width: 55px;
+    height: 55px;
+    margin-right: 10px;
+  }
+
+  a {
+    color: $color-lavender;
+
+    &:hover {
+      color: $color-lavender;
+      text-decoration: underline;
+    }
+  }
+}

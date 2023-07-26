@@ -1,0 +1,9 @@
+$color-green: #48BF91;
+$color-blue: #0076BE;
+$color-lavender: #BBBEFE;
+
+:export {
+  greenColor: $color-green;
+  blueColor: $color-blue;
+  lavenderColor: $color-lavender;
+}
