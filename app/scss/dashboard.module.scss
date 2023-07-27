@@ -1,14 +1,19 @@
 @import "./variables.module.scss";
 
 .wrapper {
-  // display: flex;
-  // justify-content: center;
-  // flex-wrap: wrap;
+  display: flex;
+  max-width: 1280px;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  padding: 0 30px;
 }
 
 .header {
+  display: flex;
   width: 100%;
-  margin: 30px 0 20px;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin: 30px 0 60px;
 
   h1 {
     display: flex;
@@ -31,6 +36,56 @@
     &:hover {
       color: $color-lavender;
       text-decoration: underline;
+    }
+  }
+
+  button {
+    display: flex;
+    background-color: $color-lavender;
+    border: none;
+    color: $color-yellow;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 8px 10px;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $color-purple;
+    }
+  }
+
+  .signout {
+    width: 25px;
+    height: 25px;
+    margin: 0 10px 0 0;
+    cursor: pointer;
+  }
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+
+  .btn-write {
+    width: 100px;
+    height: 40px;
+    background-color: $color-yellow;
+    border: none;
+    padding: 0 10px;
+    font-weight: bold;
+    color: $color-lavender;
+    cursor: pointer;
+    margin-left: auto;
+
+    &:hover {
+      background-color: #ffeea0;
+    }
+
+    section {
+      margin-top: 10px;
     }
   }
 }

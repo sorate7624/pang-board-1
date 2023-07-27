@@ -82,7 +82,8 @@ const Signin: React.FC<SigninProps> = ({ onSigninSuccess }) => {
         console.log("response.data:", response.data)
         // /dashboard로 데이터를 전달하는 코드
         dispatch(setResponseData(response.data.data_list))
-
+        // localStorage
+        localStorage.setItem("userId", id)
         router.push(`/dashboard`)
       } catch (error) {
         // 에러 처리
@@ -164,105 +165,109 @@ const Signin: React.FC<SigninProps> = ({ onSigninSuccess }) => {
       <main>
         <div className={classNames(signinStyles["box"], "animate__animated animate__fadeIn")}>
           {isSigninActive ? (
-            <form className={signinStyles["box-signin"]} onSubmit={handleSigninSubmit}>
+            <>
               <div className={signinStyles["top-header"]}>
                 <h3>Welcome, Pang board</h3>
                 <small>We are happy to have you back.</small>
               </div>
-              <div className={signinStyles["input-group"]}>
-                <div className={signinStyles["input-field"]}>
-                  <input
-                    type="text"
-                    value={id}
-                    onChange={handleIdChange}
-                    id="signinId"
-                    required
-                    className={signinStyles["input-box"]}
-                  />
-                  <label htmlFor="signinId">ID</label>
-                </div>
-                <div className={signinStyles["input-field"]}>
-                  <input
-                    type={eyeIconVisible ? "text" : "password"}
-                    id="signinPassword"
-                    value={password}
-                    onChange={handlePasswordChange}
-                    required
-                    className={signinStyles["input-box"]}
-                  />
-                  <label htmlFor="signinPassword">Password</label>
-                  <div className={signinStyles["eye-area"]}>
-                    <div className={signinStyles["eye-box"]} onClick={togglePasswordVisibility}>
-                      <FontAwesomeIcon icon={eyeIconVisible ? faEye : faEyeSlash} />
+              <form className={signinStyles["box-signin"]} onSubmit={handleSigninSubmit}>
+                <div className={signinStyles["input-group"]}>
+                  <div className={signinStyles["input-field"]}>
+                    <input
+                      type="text"
+                      value={id}
+                      onChange={handleIdChange}
+                      id="signinId"
+                      required
+                      className={signinStyles["input-box"]}
+                    />
+                    <label htmlFor="signinId">ID</label>
+                  </div>
+                  <div className={signinStyles["input-field"]}>
+                    <input
+                      type={eyeIconVisible ? "text" : "password"}
+                      id="signinPassword"
+                      value={password}
+                      onChange={handlePasswordChange}
+                      required
+                      className={signinStyles["input-box"]}
+                    />
+                    <label htmlFor="signinPassword">Password</label>
+                    <div className={signinStyles["eye-area"]}>
+                      <div className={signinStyles["eye-box"]} onClick={togglePasswordVisibility}>
+                        <FontAwesomeIcon icon={eyeIconVisible ? faEye : faEyeSlash} />
+                      </div>
                     </div>
                   </div>
+                  <input
+                    type="submit"
+                    className={classNames(signinStyles["input-submit"], signinStyles["signin"])}
+                    value="Sign In"
+                  />
                 </div>
-                <input
-                  type="submit"
-                  className={classNames(signinStyles["input-submit"], signinStyles["signin"])}
-                  value="Sign In"
-                />
-              </div>
-              {errorSignin && (
-                <p className={signinStyles["notice-txt"]}>
-                  <FontAwesomeIcon icon={faTriangleExclamation} />
-                  {errorSignin}
-                </p>
-              )}
-            </form>
+                {errorSignin && (
+                  <p className={signinStyles["notice-txt"]}>
+                    <FontAwesomeIcon icon={faTriangleExclamation} />
+                    {errorSignin}
+                  </p>
+                )}
+              </form>
+            </>
           ) : (
-            <form className={signinStyles["box-signup"]} onSubmit={handleSignupSubmit}>
+            <>
               <div className={signinStyles["top-header"]}>
                 <h3>Sign Up, Now</h3>
                 <small>We are happy to have you with us.</small>
               </div>
-              <div className={signinStyles["input-group"]}>
-                <div className={signinStyles["input-field"]}>
-                  <input
-                    type="text"
-                    value={id}
-                    onChange={handleIdChange}
-                    id="signupId"
-                    required
-                    className={signinStyles["input-box"]}
-                  />
-                  <label htmlFor="signupId">ID</label>
-                </div>
-                <div className={signinStyles["input-field"]}>
-                  <input
-                    type={eyeIconVisible ? "text" : "password"}
-                    id="signupPassword"
-                    value={password}
-                    onChange={handlePasswordChange}
-                    required
-                    className={signinStyles["input-box"]}
-                  />
-                  <label htmlFor="signupPassword">Password</label>
-                  <div className={signinStyles["eye-area"]}>
-                    <div className={signinStyles["eye-box"]} onClick={togglePasswordVisibility}>
-                      <FontAwesomeIcon icon={eyeIconVisible ? faEye : faEyeSlash} />
+              <form className={signinStyles["box-signup"]} onSubmit={handleSignupSubmit}>
+                <div className={signinStyles["input-group"]}>
+                  <div className={signinStyles["input-field"]}>
+                    <input
+                      type="text"
+                      value={id}
+                      onChange={handleIdChange}
+                      id="signupId"
+                      required
+                      className={signinStyles["input-box"]}
+                    />
+                    <label htmlFor="signupId">ID</label>
+                  </div>
+                  <div className={signinStyles["input-field"]}>
+                    <input
+                      type={eyeIconVisible ? "text" : "password"}
+                      id="signupPassword"
+                      value={password}
+                      onChange={handlePasswordChange}
+                      required
+                      className={signinStyles["input-box"]}
+                    />
+                    <label htmlFor="signupPassword">Password</label>
+                    <div className={signinStyles["eye-area"]}>
+                      <div className={signinStyles["eye-box"]} onClick={togglePasswordVisibility}>
+                        <FontAwesomeIcon icon={eyeIconVisible ? faEye : faEyeSlash} />
+                      </div>
                     </div>
                   </div>
+                  <input
+                    type="submit"
+                    className={classNames(signinStyles["input-submit"], signinStyles["signup"])}
+                    value="Sign Up"
+                  />
                 </div>
-                <input
-                  type="submit"
-                  className={classNames(signinStyles["input-submit"], signinStyles["signup"])}
-                  value="Sign Up"
-                />
-              </div>
-              {errorSignup && (
-                <p className={signinStyles["notice-txt"]}>
-                  <FontAwesomeIcon icon={faTriangleExclamation} />
-                  {errorSignup}
-                </p>
-              )}
-              {successSignup && (
-                <p className={classNames(signinStyles["notice-txt"], signinStyles["success"])}>
-                  <FontAwesomeIcon icon={faCircleCheck} />
-                  {successSignup}
-                </p>
-              )}
-            </form>
+                {errorSignup && (
+                  <p className={signinStyles["notice-txt"]}>
+                    <FontAwesomeIcon icon={faTriangleExclamation} />
+                    {errorSignup}
+                  </p>
+                )}
+                {successSignup && (
+                  <p className={classNames(signinStyles["notice-txt"], signinStyles["success"])}>
+                    <FontAwesomeIcon icon={faCircleCheck} />
+                    {successSignup}
+                  </p>
+                )}
+              </form>
+            </>
           )}
           <div className={signinStyles["switch"]} onClick={toggleSigninButton}>
             {isSigninActive ? (
