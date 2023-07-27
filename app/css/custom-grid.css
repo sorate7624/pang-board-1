@@ -1,0 +1,8 @@
+.rdg {
+  border: none;
+  text-align: center;
+}
+
+.rdg-cell[aria-selected="true"] {
+  outline: 2px solid #bbbefe;
+}

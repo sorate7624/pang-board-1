@@ -29,7 +29,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "Src",
-    "app/components/dashboard.tsx"
+    "app/components/dashboard.tsx",
+    "app/_error.js"
   ],
   "exclude": ["node_modules"]
 }

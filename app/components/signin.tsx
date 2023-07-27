@@ -17,7 +17,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import axios from "axios"
 import { useDispatch } from "react-redux"
-import { setResponseData } from "../store/actions" // 해당 액션은 리덕스 액션 파일에서 정의되어 있어야 합니다.
+import { setResponseData } from "../store/actions"
 
 interface SigninProps {
   onSigninSuccess: () => void
@@ -32,7 +32,7 @@ const Signin: React.FC<SigninProps> = ({ onSigninSuccess }) => {
   const [password, setPassword] = useState("")
   const [errorSignin, setErrorSignin] = useState("")
   const [errorSignup, setErrorSignup] = useState("")
-  const [successSignin, setSuccessSignin] = useState(false)
+  // const [successSignin, setSuccessSignin] = useState(false)
   const [successSignup, setSuccessSignup] = useState("")
   const [eyeIconVisible, setEyeIconVisible] = useState(false)
   const [isSigninActive, setIsSigninActive] = useState(true)
@@ -65,12 +65,13 @@ const Signin: React.FC<SigninProps> = ({ onSigninSuccess }) => {
         },
       )
       setErrorSignin("")
-      setSuccessSignin(true)
+      // setSuccessSignin(true)
       console.log("response.data: ", response.data)
       console.log("response: ", response)
       console.log("로그인 성공했으니 목록으로 넘어가야 함")
 
       const token = response.data.token // JWT 토큰 값
+      console.log("token:", token)
 
       try {
         const response = await axios.get(`${DEVELOP_URL}/dashboard`, {
@@ -78,12 +79,13 @@ const Signin: React.FC<SigninProps> = ({ onSigninSuccess }) => {
             Authorization: `${token}`,
           },
         })
-        console.log("token:", token)
         console.log("response.data:", response.data)
         // /dashboard로 데이터를 전달하는 코드
         dispatch(setResponseData(response.data.data_list))
         // localStorage
         localStorage.setItem("userId", id)
+        localStorage.setItem("token", token)
+
         router.push(`/dashboard`)
       } catch (error) {
         // 에러 처리
@@ -298,16 +300,8 @@ const Signin: React.FC<SigninProps> = ({ onSigninSuccess }) => {
           </div>
         </div>
       </main>
-
-      {/* <button type="button" onClick={() => router.push('/dashboard')}>
-        Dashboard
-      </button> */}
     </div>
   )
 }
 
 export default Signin
-
-// export default function Signin() {
-
-// }

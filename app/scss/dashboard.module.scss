@@ -41,19 +41,15 @@
 
   button {
     display: flex;
-    background-color: $color-lavender;
     border: none;
     color: $color-yellow;
     font-weight: bold;
+    background: none;
     font-size: 16px;
     padding: 8px 10px;
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
-
-    &:hover {
-      background-color: $color-purple;
-    }
   }
 
   .signout {
@@ -71,21 +67,38 @@
 
   .btn-write {
     width: 100px;
-    height: 40px;
-    background-color: $color-yellow;
     border: none;
-    padding: 0 10px;
+    padding: 5px 10px;
     font-weight: bold;
-    color: $color-lavender;
+    background-color: $color-lavender;
+    color: $color-yellow;
     cursor: pointer;
     margin-left: auto;
 
     &:hover {
-      background-color: #ffeea0;
+      background-color: $color-purple;
     }
 
     section {
       margin-top: 10px;
     }
   }
+}
+
+.notice-txt {
+  display: block;
+  height: 16px;
+  color: orange;
+  font-weight: 500;
+  font-size: 14px;
+  padding-left: 10px;
+  margin-top: 10px;
+
+  svg {
+    margin-right: 3px;
+  }
+}
+
+.section {
+  margin-top: 20px;
 }

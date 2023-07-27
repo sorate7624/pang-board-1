@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:parallel": "npm-run-all --parallel build lint format",
     "start": "HOST=0.0.0.0 next start",
     "lint": "next lint",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx}\""
@@ -24,6 +25,7 @@
     "eslint-config-next": "13.4.12",
     "next": "^13.4.12",
     "react": "^18.2.0",
+    "react-data-grid": "^7.0.0-beta.34",
     "react-dom": "^18.2.0",
     "react-modal": "^3.16.1",
     "react-redux": "^8.1.1",
